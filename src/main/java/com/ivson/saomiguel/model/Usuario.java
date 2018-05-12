@@ -1,6 +1,9 @@
 package com.ivson.saomiguel.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="Usuario")
@@ -14,6 +17,9 @@ public class Usuario {
 	private int idade;
 	
 	private String email;
+	
+	@DBRef
+	private List<Perfil> perfis;
 
 	public String getId() {
 		return id;
@@ -45,5 +51,13 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
 	}
 }
